@@ -1,0 +1,1 @@
+{"ast":null,"code":"export class OrderStatus {\n  constructor(status) {\n    this.id = -1;\n    this.status = \"\";\n    this.status = status;\n  }\n\n}","map":null,"metadata":{},"sourceType":"module"}

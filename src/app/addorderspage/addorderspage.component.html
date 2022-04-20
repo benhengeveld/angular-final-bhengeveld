@@ -1,0 +1,37 @@
+<div class="m-4">
+  <div class="card">
+    <div class="card-header">
+      <h2>Add an Order</h2>
+    </div>
+    <div class="card-body">
+      <form #myForm="ngForm">
+        <div class="mb-3">
+          <label for="selStore" class="form-label">Store</label>
+          <select id="selStore" name="selStore" class="form-select" [(ngModel)]="order.storeId">
+            <option *ngFor="let store of stores" value="{{store.id}}">{{store.city}}, {{store.address}}, {{store.postalCode}}</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label for="selItem" class="form-label">Item</label>
+          <select id="selItem" name="selItem" class="form-select" [(ngModel)]="order.itemId">
+            <option *ngFor="let item of items" value="{{item.id}}">{{item.name}}: ${{item.price}}</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label for="numQuantity" class="form-label">Quantity</label>
+          <input min="1" type="number" id="numQuantity" name="numQuantity" class="form-control" [(ngModel)]="order.quantity">
+        </div>
+
+        <h5 style="color: red" *ngIf="errors != ''"> ERROR: {{errors}}</h5>
+        <button type="button" id="btnAdd" name="btnAdd" class="btn btn-primary" (click)="btnAdd_click()">Add</button>
+
+      </form>
+
+    </div>
+    <div class="card-footer">
+      {{myForm.value | json}}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<div class="m-4">
+  <div class="card">
+    <div class="card-header">
+      <h2>List of Items</h2>
+      <button type="button" id="btnAdd" name="btnAdd" class="btn btn-primary btn-sm me-4" (click)="btnAdd_click()">Add new item</button>
+    </div>
+    <div class="card-body">
+      <ul class="list-group">
+        <li *ngFor="let item of items" class="list-group-item">
+          <b>Name:</b> {{item.name}}<br>
+          <b>Price:</b> ${{item.price}}
+          <button type="button" id="btnOrders" name="btnOrders" class="btn btn-secondary btn-sm me-4" (click)="btnOrders_click(item)">Orders for this Item</button>
+          <button type="button" id="btnOrder" name="btnOrder" class="btn btn-secondary btn-sm me-4" (click)="btnOrder_click(item)">Order this Item</button>
+          <button type="button" id="btnModify" name="btnModify" class="btn btn-primary btn-sm me-4" (click)="btnModify_click(item)">Modify</button>
+          <button type="button" id="btnDelete" name="btnDelete" class="btn btn-danger btn-sm me-4" (click)="btnDelete_click(item)">Delete</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

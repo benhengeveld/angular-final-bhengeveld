@@ -1,0 +1,32 @@
+<div class="m-4">
+  <div class="card">
+    <div class="card-header">
+      <h2>List of Orders<span *ngIf="store != null"> for {{store.city}}, {{store.address}}, {{store.postalCode}}</span><span *ngIf="item != null"> for {{item.name}} at ${{item.price}}</span><span *ngIf="orderStatus != null"> that are {{orderStatus.status}}</span></h2>
+      <button type="button" id="btnAdd" name="btnAdd" class="btn btn-primary btn-sm me-4" (click)="btnAdd_click()">Add new order</button>
+      <button *ngIf="orderStatus == null || orderStatus.id != 1" type="button" id="btnShowPending" name="btnShowPending" class="btn btn-warning btn-sm me-4" (click)="btnShowOrderStatus_click(1)">Show Pending Orders</button>
+      <button *ngIf="orderStatus == null || orderStatus.id != 2" type="button" id="btnShowOutbound" name="btnShowOutbound" class="btn btn-info btn-sm me-4" (click)="btnShowOrderStatus_click(2)">Show Outbound Orders</button>
+      <button *ngIf="orderStatus == null || orderStatus.id != 3" type="button" id="btnShowDelivered" name="btnShowDelivered" class="btn btn-success btn-sm me-4" (click)="btnShowOrderStatus_click(3)">Show Delivered Orders</button>
+      <button *ngIf="store != null || item != null || orderStatus != null" type="button" id="btnTopBack" name="btnBack" class="btn btn-secondary btn-sm me-4" (click)="btnBack_click()">Back to all orders</button>
+    </div>
+    <div class="card-body">
+      <ul class="list-group">
+        <li *ngFor="let order of orders" class="list-group-item">
+          <span *ngIf="item == null"><b>Item:</b>&nbsp;<a routerLink="/orders" [queryParams]="{itemId:order.itemId}">{{order.item.name}}</a><br></span>
+          <b>Quantity:</b> x{{order.quantity}}<br>
+          <span *ngIf="store == null"><b>To:</b>&nbsp;<a routerLink="/orders" [queryParams]="{storeId:order.storeId}">{{order.store.address}} {{order.store.city}}, {{order.store.postalCode}}</a><br></span>
+          <b>Status:</b> {{order.orderStatus.status}}
+
+          <button type="button" id="btnSetPending" name="btnModify" class="btn btn-warning btn-sm me-4" *ngIf="order.orderStatusId != 1" (click)="btnSetPending_click(order)">Set to Pending</button>
+          <button type="button" id="btnSetOutbound" name="btnModify" class="btn btn-info btn-sm me-4" *ngIf="order.orderStatusId != 2" (click)="btnOutbound_click(order)">Set to Outbound</button>
+          <button type="button" id="btnSetDelivered" name="btnModify" class="btn btn-success btn-sm me-4" *ngIf="order.orderStatusId != 3" (click)="btnSetDelivered_click(order)">Set to Delivered</button>
+          <button type="button" id="btnModify" name="btnModify" class="btn btn-primary btn-sm me-4" (click)="btnModify_click(order)">Modify</button>
+          <button type="button" id="btnDelete" name="btnDelete" class="btn btn-danger btn-sm me-4" (click)="btnDelete_click(order)">Delete</button>
+        </li>
+      </ul>
+      <div *ngIf="store != null || item != null || orderStatus != null">
+        <br>
+        <button type="button" id="btnBack" name="btnBack" class="btn btn-secondary btn-sm me-4" (click)="btnBack_click()">Back to all orders</button>
+      </div>
+    </div>
+  </div>
+</div>

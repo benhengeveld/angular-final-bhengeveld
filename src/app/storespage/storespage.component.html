@@ -1,0 +1,22 @@
+<div class="m-4">
+  <div class="card">
+    <div class="card-header">
+      <h2>List of Stores</h2>
+      <button type="button" id="btnAdd" name="btnAdd" class="btn btn-primary btn-sm me-4" (click)="btnAdd_click()">Add new store</button>
+    </div>
+    <div class="card-body">
+      <ul class="list-group">
+        <li *ngFor="let store of stores" class="list-group-item">
+          <b>City:</b> {{store.city}}<br>
+          <b>Address:</b> {{store.address}}<br>
+          <b>Postal Code:</b> {{store.postalCode}}
+          <button type="button" id="btnOrders" name="btnOrders" class="btn btn-secondary btn-sm me-4" (click)="btnOrders_click(store)">Orders for this Store</button>
+          <button type="button" id="btnEmployees" name="btnEmployees" class="btn btn-secondary btn-sm me-4" (click)="btnEmployees_click(store)">Employees at this Store</button>
+          <button type="button" id="btnOrder" name="btnOrder" class="btn btn-secondary btn-sm me-4" (click)="btnOrder_click(store)">Order to this Store</button>
+          <button type="button" id="btnModify" name="btnModify" class="btn btn-primary btn-sm me-4" (click)="btnModify_click(store)">Modify</button>
+          <button type="button" id="btnDelete" name="btnDelete" class="btn btn-danger btn-sm me-4" (click)="btnDelete_click(store)">Delete</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

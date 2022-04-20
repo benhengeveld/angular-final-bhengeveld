@@ -1,0 +1,27 @@
+<div class="m-4">
+  <div class="card">
+    <div class="card-header">
+      <h2>List of Employees<span *ngIf="store != null"> for {{store.city}}, {{store.address}}, {{store.postalCode}}</span></h2>
+      <button type="button" id="btnAdd" name="btnAdd" class="btn btn-primary btn-sm me-4" (click)="btnAdd_click()">Add new employee</button>
+      <div *ngIf="store != null">
+        <button type="button" id="btnTopBack" name="btnBack" class="btn btn-secondary btn-sm me-4" (click)="btnBack_click()">Back to all employees</button>
+      </div>
+    </div>
+    <div class="card-body">
+      <ul class="list-group">
+        <li *ngFor="let employee of employees" class="list-group-item">
+          <b>First Name:</b> {{employee.firstName}}<br>
+          <b>Last Name:</b> {{employee.lastName}}<br>
+          <span *ngIf="store == null"><b>Store:</b>&nbsp;<a routerLink="/employees" [queryParams]="{storeId:employee.storeId}">{{employee.store.address}} {{employee.store.city}}, {{employee.store.postalCode}}</a></span>
+          <button type="button" id="btnModify" name="btnModify" class="btn btn-primary btn-sm me-4" (click)="btnModify_click(employee)">Modify</button>
+          <button type="button" id="btnDelete" name="btnDelete" class="btn btn-danger btn-sm me-4" (click)="btnDelete_click(employee)">Delete</button>
+        </li>
+      </ul>
+
+      <div *ngIf="store != null">
+        <br>
+        <button type="button" id="btnBack" name="btnBack" class="btn btn-secondary btn-sm me-4" (click)="btnBack_click()">Back to all employees</button>
+      </div>
+    </div>
+  </div>
+</div>

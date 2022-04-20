@@ -1,0 +1,1 @@
+{"ast":null,"code":"export class Store {\n  constructor(city, address, postalCode) {\n    this.id = -1;\n    this.city = \"\";\n    this.address = \"\";\n    this.postalCode = \"\";\n    this.city = city;\n    this.address = address;\n    this.postalCode = postalCode;\n  }\n\n}","map":null,"metadata":{},"sourceType":"module"}

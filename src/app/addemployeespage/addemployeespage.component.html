@@ -1,0 +1,35 @@
+<div class="m-4">
+  <div class="card">
+    <div class="card-header">
+      <h2>Add an Employee</h2>
+    </div>
+    <div class="card-body">
+      <form #myForm="ngForm">
+        <div class="mb-3">
+          <label for="txtFirstName" class="form-label">First Name</label>
+          <input type="text" id="txtFirstName" name="txtFirstName" class="form-control" [(ngModel)]="employee.firstName">
+        </div>
+
+        <div class="mb-3">
+          <label for="txtLastName" class="form-label">Last Name</label>
+          <input type="text" id="txtLastName" name="txtLastName" class="form-control" [(ngModel)]="employee.lastName">
+        </div>
+
+        <div class="mb-3">
+          <label for="selStore" class="form-label">Store</label>
+          <select id="selStore" name="selStore" class="form-select" [(ngModel)]="employee.storeId">
+            <option *ngFor="let store of stores" value="{{store.id}}">{{store.city}}, {{store.address}}, {{store.postalCode}}</option>
+          </select>
+        </div>
+
+        <h5 style="color: red" *ngIf="errors != ''"> ERROR: {{errors}}</h5>
+        <button type="button" id="btnAdd" name="btnAdd" class="btn btn-primary" (click)="btnAdd_click()">Add</button>
+
+      </form>
+
+    </div>
+    <div class="card-footer">
+      {{myForm.value | json}}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<div class="m-4">
+  <div class="card">
+    <div class="card-header">
+      <h2>Add a Item</h2>
+    </div>
+    <div class="card-body">
+      <form #myForm="ngForm">
+        <div class="mb-3">
+          <label for="txtName" class="form-label">Name</label>
+          <input type="text" id="txtName" name="txtName" class="form-control" [(ngModel)]="item.name">
+        </div>
+
+        <div class="mb-3">
+          <label for="numPrice" class="form-label">Price</label>
+          <input type="number" id="numPrice" name="numPrice" class="form-control" [(ngModel)]="item.price">
+        </div>
+
+        <h5 style="color: red" *ngIf="errors != ''"> ERROR: {{errors}}</h5>
+        <button type="button" id="btnAdd" name="btnAdd" class="btn btn-primary"  (click)="btnAdd_click()">Add</button>
+
+      </form>
+
+    </div>
+    <div class="card-footer">
+      {{myForm.value | json}}
+    </div>
+  </div>
+</div>
